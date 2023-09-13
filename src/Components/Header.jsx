@@ -1,18 +1,25 @@
 import { LOGO_URL } from "../Utils/Constants";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="flex justify-between mb-3 px-20 py-1 items-center bg-gray-100 shadow-md">
+    <div className="flex w-full top-0 justify-between mb-3 px-20 py-1 items-center bg-gray-100 shadow-md">
       <div className="">
-        <img className="w-16" src={LOGO_URL} alt="Swiggy logo" />
+        <Link to="/">
+          <img className="w-16" src={LOGO_URL} alt="Swiggy logo" />
+        </Link>
       </div>
       <div className="">
         <ul className="flex gap-6 ">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">About US</li>
-          <li className="cursor-pointer">Contact US</li>
-          <button className="cursor-pointer">Sign in</button>
-          <li className="cursor-pointer">Cart</li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/About">
+            <li>About US</li>
+          </Link>
+          <li>Contact US</li>
+          <button>Sign in</button>
+          <li>Cart</li>
         </ul>
       </div>
     </div>

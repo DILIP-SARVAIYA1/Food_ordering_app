@@ -2,9 +2,11 @@ import RestaurantCard from "./RestaurantCard";
 import { MAIN_API } from "../Utils/Constants";
 import { useEffect, useState } from "react";
 import ShimmerUi from "./ShimmerUi";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resData, setResData] = useState(null);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,7 +23,11 @@ const Body = () => {
   ) : (
     <div className="flex flex-wrap gap-5 justify-between my-10 px-20">
       {resData?.map((res) => {
-        return <RestaurantCard key={res.info.id} resData={res} />;
+        return (
+          <Link to={"Restaurants/" + res.info.id}>
+            <RestaurantCard key={res.info.id} resData={res} />
+          </Link>
+        );
       })}
     </div>
   );
