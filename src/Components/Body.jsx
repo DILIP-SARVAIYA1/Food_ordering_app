@@ -24,8 +24,8 @@ const Body = () => {
     <div className="flex flex-wrap gap-5 justify-between my-10 px-20">
       {resData?.map((res) => {
         return (
-          <Link to={"Restaurants/" + res.info.id}>
-            <RestaurantCard key={res.info.id} resData={res} />
+          <Link to={"Restaurants/" + res?.info?.id}>
+            <RestaurantCard key={res?.info?.id} resData={res} />
           </Link>
         );
       })}

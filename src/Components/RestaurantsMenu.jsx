@@ -1,33 +1,36 @@
-import { useState, useEffect } from "react";
-import { RES_CARD_DETAILS } from "../Utils/Constants";
 import { useParams } from "react-router-dom";
 import ShimmerUi from "./ShimmerUi";
+import { useRestaurantData } from "../Utils/useGetRestaurantData";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantsMenu = () => {
-  const [restaurantsData, setRestaurantsData] = useState(null);
-
   const { ID } = useParams();
 
-  useEffect(() => {
-    fetchMenuData();
-  }, []);
+  const restaurantsData = useRestaurantData(ID);
 
-  const fetchMenuData = async () => {
-    const menuData = await fetch(RES_CARD_DETAILS + ID);
-    const menuJson = await menuData.json();
-    setRestaurantsData(menuJson.data);
-  };
   if (restaurantsData === null) {
     return <ShimmerUi />;
   } else {
-    const { cards } =
-      restaurantsData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
-    const { name } = restaurantsData?.cards[0]?.card?.card?.info;
-    console.log(restaurantsData?.cards[0]?.card?.card?.info);
+    const { name, cuisines } = restaurantsData?.cards[0]?.card?.card?.info;
+    const category =
+      restaurantsData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+        (c) =>
+          c?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+    console.log(category);
     return (
-      <div>
-        <p>{name}</p>
-        <p>name</p>
+      <div className="text-center mt-5">
+        <h1 className="font-bold text-2xl">{name}</h1>
+        <p>{cuisines.join(", ")}</p>
+        {category.map((item) => {
+          return (
+            <RestaurantCategory
+              key={item?.card?.card?.title}
+              data={item?.card?.card}
+            />
+          );
+        })}
       </div>
     );
   }
