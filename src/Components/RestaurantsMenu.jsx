@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import ShimmerUi from "./ShimmerUi";
 import { useRestaurantData } from "../Utils/useGetRestaurantData";
 import RestaurantCategory from "./RestaurantCategory";
+import ShimmerUiOfItemList from "./ShimmerUiOfItemList";
 
 const RestaurantsMenu = () => {
   const { ID } = useParams();
@@ -9,7 +10,7 @@ const RestaurantsMenu = () => {
   const restaurantsData = useRestaurantData(ID);
 
   if (restaurantsData === null) {
-    return <ShimmerUi />;
+    return <ShimmerUiOfItemList />;
   } else {
     const { name, cuisines } = restaurantsData?.cards[0]?.card?.card?.info;
     const category =
@@ -18,7 +19,6 @@ const RestaurantsMenu = () => {
           c?.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
-    console.log(category);
     return (
       <div className="text-center mt-5">
         <h1 className="font-bold text-2xl">{name}</h1>
