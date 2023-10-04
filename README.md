@@ -120,3 +120,34 @@
             * <HTML new data>
         === componentDidUpdate ===
         === componentWillUnmount ===
+
+# Lifting the state up
+
+- Basically give control to its parent
+- Read more about = https://react.dev/learn/sharing-state-between-components#lifting-state-up-by-example
+
+# React Context
+
+- Pass data in global and access to any were in program
+- import from react as named import { createContext } for creating context
+- This is utility function
+- import useContext hooks for use createContext
+
+# Redux-Toolkit
+
+- Redux is big js object and it is capt inside central global space
+- Slicing in redux store for big object
+- Click on add btn => Despatch ( Action ) => Call Function( Reducer ) => Reducer Fn will modify cart => Cart is subscribing to the store using ( selector ) it will automatically updated
+- Subscribing to the store = Selector => read data from redux store => modify React components
+- Data change in store => Header components will automatically updated
+
+  - Install @reduxjs/toolkit and react-redux
+  - Build our store
+  - Connecting our store to our app
+  - Slice ( cartSlice )
+  - Despatch ( action )
+  - Selector
+
+- configureStore() = for creating our store
+- Provider = for providing our store to app <Provider store={}>rape whole app</Provider>
+- Selector is react-redux Hooks

@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
 import AboutUS from "./Components/AboutUS";
 import RestaurantsMenu from "./Components/RestaurantsMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+import appStore from "./Utils/appStore";
+// import UserContext from "./Utils/UserContext";
+
 const AppLayout = () => {
+  const [UserName, setUserName] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "Dilip Sarvaiya",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      {/* <UserContext.Provider value={{ userLogIn: UserName }}> */}
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+      {/* </UserContext.Provider> */}
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
