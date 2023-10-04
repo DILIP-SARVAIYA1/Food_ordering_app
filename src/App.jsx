@@ -7,6 +7,7 @@ import RestaurantsMenu from "./Components/RestaurantsMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./Utils/appStore";
+import Cart from "./Components/Cart";
 // import UserContext from "./Utils/UserContext";
 
 const AppLayout = () => {
@@ -46,6 +47,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/Restaurants/:ID",
         element: <RestaurantsMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

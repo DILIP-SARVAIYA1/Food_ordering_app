@@ -150,4 +150,7 @@
 
 - configureStore() = for creating our store
 - Provider = for providing our store to app <Provider store={}>rape whole app</Provider>
+- createSlice({}) = for creating slice it will have name, initialState, reducers
 - Selector is react-redux Hooks
+- useSelector() = hooks for subscribing to the store
+- useDespatch() = hooks for despatch an action

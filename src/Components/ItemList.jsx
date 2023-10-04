@@ -1,6 +1,12 @@
+import { useDispatch } from "react-redux";
 import { RES_CARD_IMG } from "../Utils/Constants";
+import { addItem } from "../Utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       {items.map((item) => {
@@ -26,7 +32,10 @@ const ItemList = ({ items }) => {
                 src={RES_CARD_IMG + item?.card?.info?.imageId}
                 alt="Error"
               />
-              <button className="absolute bottom-[-10px] left-4 rounded-md shadow-lg font-bold text-green-500 bg-gray-50 py-1 w-9/12">
+              <button
+                className="absolute bottom-[-10px] left-4 rounded-md shadow-lg font-bold text-green-500 bg-gray-50 py-1 w-9/12"
+                onClick={() => handleAddItem(item)}
+              >
                 Add +
               </button>
             </div>

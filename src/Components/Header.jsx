@@ -27,7 +27,9 @@ const Header = () => {
           </Link>
           <li>Contact US</li>
           <button>Sign in</button>
-          <li className="font-bold">Cart - ({cartItems.length} items)</li>
+          <Link to="/cart">
+            <li className="font-bold">Cart - ({cartItems.length} items)</li>
+          </Link>
           <li className="">{userLogIn}</li>
         </ul>
       </div>
