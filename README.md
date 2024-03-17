@@ -154,3 +154,26 @@
 - Selector is react-redux Hooks
 - useSelector() = hooks for subscribing to the store
 - useDespatch() = hooks for despatch an action
+- redux-toolkit uses immer library behind the seance for mutate state
+
+# Testing
+
+- Unit testing
+- Integration testing
+- End to end Testing (e2e)
+
+# Setting up testing in our App
+
+- Install React Testing Library => npm i -D @testing-library/react
+- Installed jest => npm i -D jest
+- Installed Babel Dependencies
+- Configure Babel => babel.config.js
+- Configure parcel Config file to disable default babel transpilation
+- npx jest --init
+- Install jsdom library => npm install --save-dev jest-environment-jsdom
+- [__test__] folder for jest test file
+- name.test.js or ts test or spec should be consider as test file
+- use test("string",(cf)=>{})
+- Install @babel/preset-react - to make JSX work in test cases
+- Include @babel/preset-react inside my babel config => ["@babel/preset-react", { runtime: "automatic" }]
+- Install @testing-library/jest-dom
