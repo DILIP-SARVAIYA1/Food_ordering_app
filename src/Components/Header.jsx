@@ -11,7 +11,7 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
   return (
-    <div className="flex w-full top-0 justify-between mb-3 px-20 py-1 items-center bg-gray-100 shadow-md">
+    <div className="flex w-full sticky top-0 justify-between mb-3 px-20 py-1 items-center bg-gray-100 shadow-md z-50">
       <div className="">
         <Link to="/">
           <img className="w-16" src={LOGO_URL} alt="Swiggy logo" />
@@ -22,15 +22,21 @@ const Header = () => {
           <Link to="/">
             <li>Home</li>
           </Link>
-          <Link to="/About">
-            <li>About US</li>
-          </Link>
           <Link to="/contact">
             <li>Contact US</li>
           </Link>
-          <button>Sign in</button>
           <Link to="/cart">
-            <li className="font-bold">Cart - ({cartItems.length} items)</li>
+            <li className="font-bold flex">
+              <svg
+                id="Flat"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 256 256"
+                width="24"
+              >
+                <path d="M217.06543,146.8623l13.09082-72.00048A16.00086,16.00086,0,0,0,214.41406,56H46.67676L41.793,29.13818A15.9918,15.9918,0,0,0,26.05078,16H8A8,8,0,0,0,8,32H26.05078L52.75293,178.86182a16.0028,16.0028,0,0,0,1.187,3.76489A27.99341,27.99341,0,1,0,97.293,192H166.707A27.99678,27.99678,0,1,0,192,176H68.49512l-2.90918-16h135.7373A15.99184,15.99184,0,0,0,217.06543,146.8623ZM84,204a12,12,0,1,1-12-12A12.01343,12.01343,0,0,1,84,204Zm120,0a12,12,0,1,1-12-12A12.01343,12.01343,0,0,1,204,204ZM49.58594,72H214.41406l-13.09082,72H62.67676Z" />
+              </svg>
+              {cartItems.length === 0 ? " Empty" : cartItems.length + " items"}
+            </li>
           </Link>
           <li className="">{userLogIn}</li>
         </ul>

@@ -7,7 +7,7 @@ const RestaurantCard = (props) => {
   const { name, cloudinaryImageId, cuisines, sla } = props.resData.info;
   return (
     <div
-      className="w-[250px] h-full  shadow-lg bg-gray-200 cursor-pointer rounded-md hover:bg-gray-300 hover:scale-95 transition-all"
+      className="w-[250px] h-full shadow-lg bg-gray-200 cursor-pointer rounded-lg hover:bg-gray-300 hover:scale-95 transition-all"
       onClick={() => {
         window.scrollTo({ top: 0, left: 0 });
       }}
@@ -18,7 +18,7 @@ const RestaurantCard = (props) => {
         alt="Restaurants image"
       />
       <div className="px-5 py-2">
-        <p className="mt-2 font-bold">{name}</p>
+        <p className="font-bold">{name}</p>
         <p className="text-gray-600">{cuisines.join(", ")}</p>
         <p className="text-gray-700">{sla.deliveryTime} Minutes</p>
         <p className="text-sm text-gray-500">User Log in: {userLogIn}</p>

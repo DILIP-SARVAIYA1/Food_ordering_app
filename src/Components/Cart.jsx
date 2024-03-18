@@ -7,13 +7,18 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-  const itemData = useSelector((store) => store.cart.items);
+  const itemData = useSelector((store) => store.cart?.items);
   return (
-    <div>
-      <h1>Cart</h1>
-      <div>
-        <button onClick={handleClearCart}>Clear cart</button>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="font-bold text-3xl m-4">Cart</h1>
+      <div className="flex justify-center flex-col">
         <ItemList items={itemData} />
+        <button
+          className=" my-6 mx-10 border border-black px-2 py-1 bg-red-300 text-black rounded-md"
+          onClick={handleClearCart}
+        >
+          Clear cart
+        </button>
       </div>
     </div>
   );

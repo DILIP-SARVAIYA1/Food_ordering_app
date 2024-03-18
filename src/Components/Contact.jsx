@@ -1,16 +1,25 @@
 import React from "react";
 
-const Contact = () => {
-  return (
-    <div>
-      <h1>Contact Us</h1>
-      <form action="">
-        <input type="text" placeholder="Enter your name" />
-        <input type="email" placeholder="Enter Email" />
-        <button type="submit"></button>
-      </form>
-    </div>
-  );
-};
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className="flex justify-center items-center flex-col w-full h-full">
+        <h1 className="text-3xl font-bold m-11">Contact Me</h1>
+        <h3 className="text-xl">
+          Email =
+          <a href="mailto:dilipsarvaiya992@gmail.com">
+            dilipsarvaiya992@gmail.com
+          </a>
+        </h3>
+        <h3 className="text-xl">
+          Mobile =<a href="tel:+91 8154810034"> 8154810034</a>
+        </h3>
+      </div>
+    );
+  }
+}
 
 export default Contact;
