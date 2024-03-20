@@ -3,10 +3,15 @@ import { MAIN_API } from "../Utils/Constants";
 import { useEffect, useState } from "react";
 import ShimmerUi from "./ShimmerUi";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCorsPlugin } from "../Utils/headerSlice";
 
 const Body = () => {
   const [resData, setResData] = useState(null);
-
+  const dispatch = useDispatch();
+  resData === null
+    ? dispatch(setCorsPlugin(true))
+    : dispatch(setCorsPlugin(false));
   useEffect(() => {
     fetchData();
   }, []);

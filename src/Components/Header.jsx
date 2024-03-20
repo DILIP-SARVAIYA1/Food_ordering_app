@@ -1,14 +1,15 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { LOGO_URL } from "../Utils/Constants";
 import { Link } from "react-router-dom";
-import UserContext from "../Utils/UserContext";
+// import UserContext from "../Utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const { userLogIn } = useContext(UserContext);
+  // const { userLogIn } = useContext(UserContext);
 
   // Subscribing to the store using Selector
   const cartItems = useSelector((store) => store.cart.items);
+  const header = useSelector((store) => store.header?.corsPlugin);
   console.log(cartItems);
   return (
     <div className="flex w-full sticky top-0 justify-between mb-3 px-20 py-1 items-center bg-gray-100 shadow-md z-50">
@@ -17,6 +18,17 @@ const Header = () => {
           <img className="w-16" src={LOGO_URL} alt="Swiggy logo" />
         </Link>
       </div>
+      {header && (
+        <div>
+          <a
+            className=" font-bold text-xl underline"
+            href="https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf"
+            target="_blank"
+          >
+            Please Install and enable CORS Extension for make this App work
+          </a>
+        </div>
+      )}
       <div className="">
         <ul className="flex gap-6 ">
           <Link to="/">
@@ -28,6 +40,7 @@ const Header = () => {
           <Link to="/cart">
             <li className="font-bold flex">
               <svg
+                className="fill-orange-600"
                 id="Flat"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 256 256"
@@ -38,7 +51,7 @@ const Header = () => {
               {cartItems.length === 0 ? " Empty" : cartItems.length + " items"}
             </li>
           </Link>
-          <li className="">{userLogIn}</li>
+          {/* <li className="">{userLogIn}</li> */}
         </ul>
       </div>
     </div>
