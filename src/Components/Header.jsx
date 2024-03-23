@@ -1,13 +1,8 @@
-// import { useContext } from "react";
 import { LOGO_URL } from "../Utils/Constants";
 import { Link } from "react-router-dom";
-// import UserContext from "../Utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  // const { userLogIn } = useContext(UserContext);
-
-  // Subscribing to the store using Selector
   const cartItems = useSelector((store) => store.cart.items);
   const header = useSelector((store) => store.header?.corsPlugin);
   console.log(cartItems);
