@@ -1,11 +1,18 @@
+import { setCorsPlugin } from "../Utils/headerSlice";
 import ItemList from "./ItemList";
+import { useDispatch } from "react-redux";
 
 const RestaurantCategory = ({ data, showItems, setShowItems }) => {
   const { title, itemCards } = data;
+  const dispatch = useDispatch();
+  console.log(showItems);
 
   const handleClick = () => {
     setShowItems();
   };
+  data === true
+    ? dispatch(setCorsPlugin(true))
+    : dispatch(setCorsPlugin(false));
 
   return (
     <div className="w-6/12 mx-auto bg-gray-50 p-4 my-4 rounded-lg shadow-md">

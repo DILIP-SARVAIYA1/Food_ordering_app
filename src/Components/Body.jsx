@@ -27,7 +27,12 @@ const Body = () => {
   return resData === null ? (
     <ShimmerUi />
   ) : (
-    <div className="flex flex-wrap gap-5 justify-between my-10 px-20">
+    <div
+      className="flex flex-wrap gap-5 justify-between my-10 mx-36"
+      onLoad={() => {
+        window.scrollTo({ top: 0, left: 0 });
+      }}
+    >
       {resData?.map((res) => {
         return (
           <Link to={"Restaurants/" + res?.info?.id}>

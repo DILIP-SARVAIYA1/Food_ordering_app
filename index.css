@@ -8,15 +8,16 @@
 
 .card {
   position: relative;
-  -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 6px;
-  height: 323px;
+  height: 300px;
   overflow: hidden;
-  width: 250px;
+  width: 280px;
 }
 .shimmerBG {
+  border-radius: 20px;
+  -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   animation-duration: 2.2s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -50,7 +51,7 @@
 }
 
 .p-32 {
-  padding: 32px;
+  padding: 20px;
 }
 
 .title-line {

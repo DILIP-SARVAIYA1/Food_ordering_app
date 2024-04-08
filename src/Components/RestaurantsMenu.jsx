@@ -6,17 +6,16 @@ import { useState } from "react";
 
 const RestaurantsMenu = () => {
   const { ID } = useParams();
-
   const restaurantsData = useRestaurantData(ID);
-
-  const [showItems, setShowItems] = useState(null);
+  const [showItems, setShowItems] = useState(0);
 
   if (restaurantsData === null) {
     return <ShimmerUiOfItemList />;
   } else {
-    const { name, cuisines } = restaurantsData?.cards[0]?.card?.card?.info;
+    const { name, cuisines } = restaurantsData?.cards[2]?.card?.card?.info;
+
     const category =
-      restaurantsData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      restaurantsData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
         (c) =>
           c?.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -30,9 +29,9 @@ const RestaurantsMenu = () => {
             <RestaurantCategory
               key={item?.card?.card?.title}
               data={item?.card?.card}
-              showItems={index === showItems && true}
+              showItems={index === showItems}
               setShowItems={() =>
-                showItems === null ? setShowItems(index) : setShowItems(null)
+                showItems === index ? setShowItems(false) : setShowItems(index)
               }
             />
           );

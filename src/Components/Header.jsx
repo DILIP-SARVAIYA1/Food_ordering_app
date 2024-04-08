@@ -25,7 +25,7 @@ const Header = () => {
         </div>
       )}
       <div className="">
-        <ul className="flex gap-6 ">
+        <ul className="flex font-bold gap-6 ">
           <Link to="/">
             <li>Home</li>
           </Link>
