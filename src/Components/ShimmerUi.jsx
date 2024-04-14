@@ -1,7 +1,7 @@
 const ShimmerUi = () => {
   return (
     <div
-      className="flex flex-wrap gap-5 justify-between my-10 mx-36"
+      className="flex flex-wrap gap-5 justify-between mt-16 mx-36"
       onLoad={() => {
         window.scrollTo({ top: 0, left: 0 });
       }}

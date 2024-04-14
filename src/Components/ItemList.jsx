@@ -1,11 +1,16 @@
 import { useDispatch } from "react-redux";
 import { RES_CARD_IMG } from "../Utils/Constants";
 import { addItem } from "../Utils/cartSlice";
+import { useContext } from "react";
+import { CartContext } from "../context/cart";
 
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
+  const { cartItems, addToCart } = useContext(CartContext);
+  console.log(cartItems);
   const handleAddItem = (item) => {
     dispatch(addItem(item));
+    console.log(item);
   };
   return (
     <div>
@@ -13,7 +18,7 @@ const ItemList = ({ items }) => {
         return (
           <div
             key={item?.card?.info?.id}
-            className="text-left flex justify-between items-center border-b-2"
+            className="text-left flex justify-between items-center border-b-2 "
           >
             <div className="flex flex-col w-9/12 p-4 m-4">
               <span> {item?.card?.info?.name}</span>
@@ -34,7 +39,7 @@ const ItemList = ({ items }) => {
               />
               <button
                 className="absolute bottom-[-10px] left-4 rounded-md shadow-lg font-bold text-green-500 bg-gray-50 py-1 w-9/12"
-                onClick={() => handleAddItem(item)}
+                onClick={() => addToCart(item)}
               >
                 Add +
               </button>

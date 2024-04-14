@@ -8,9 +8,11 @@ const Cart = () => {
     dispatch(clearCart());
   };
   const itemData = useSelector((store) => store.cart?.items);
+  console.log(itemData);
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="font-bold text-3xl m-4">Cart</h1>
+      <div></div>
       <div className="flex justify-center flex-col">
         <ItemList items={itemData} />
         <button

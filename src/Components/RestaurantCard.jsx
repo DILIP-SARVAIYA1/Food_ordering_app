@@ -1,10 +1,7 @@
-import { useContext } from "react";
 import { RES_CARD_IMG } from "../Utils/Constants";
-import UserContext from "../Utils/UserContext";
 import { stringHandler } from "../Utils/handler";
 
 const RestaurantCard = (props) => {
-  const { userLogIn } = useContext(UserContext);
   const { name, cloudinaryImageId, cuisines, sla } = props.resData.info;
   return (
     <div
@@ -22,7 +19,6 @@ const RestaurantCard = (props) => {
         <p className="font-bold text-lg">{name}</p>
         <p className="text-gray-600">{stringHandler(cuisines.join(", "))}</p>
         <p className="text-gray-700">{sla.deliveryTime} Minutes</p>
-        <p className="text-sm text-gray-500">User Log in: {userLogIn}</p>
       </div>
     </div>
   );

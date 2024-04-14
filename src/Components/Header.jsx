@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const header = useSelector((store) => store.header?.corsPlugin);
-  console.log(cartItems);
   return (
-    <div className="flex w-full sticky top-0 justify-between mb-3 px-20 py-1 items-center bg-gray-100 shadow-md z-50">
+    <div className="flex w-full sticky top-0 justify-between px-20 py-1 items-center bg-gray-50 shadow-md z-50">
       <div className="">
         <Link to="/">
-          <img className="w-16" src={LOGO_URL} alt="Swiggy logo" />
+          <img className="w-14" src={LOGO_URL} alt="Swiggy logo" />
         </Link>
       </div>
       {header && (
@@ -46,7 +45,6 @@ const Header = () => {
               {cartItems.length === 0 ? " Empty" : cartItems.length + " items"}
             </li>
           </Link>
-          {/* <li className="">{userLogIn}</li> */}
         </ul>
       </div>
     </div>
