@@ -1,17 +1,10 @@
-import { useDispatch } from "react-redux";
-import { RES_CARD_IMG } from "../Utils/Constants";
-import { addItem } from "../Utils/cartSlice";
 import { useContext } from "react";
+import { RES_CARD_IMG } from "../Utils/Constants";
 import { CartContext } from "../context/cart";
 
 const ItemList = ({ items }) => {
-  const dispatch = useDispatch();
-  const { cartItems, addToCart } = useContext(CartContext);
-  console.log(cartItems);
-  const handleAddItem = (item) => {
-    dispatch(addItem(item));
-    console.log(item);
-  };
+  const { addToCart } = useContext(CartContext);
+  console.log(items);
   return (
     <div>
       {items.map((item) => {

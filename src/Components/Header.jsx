@@ -1,9 +1,12 @@
 import { LOGO_URL } from "../Utils/Constants";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { CartContext } from "../context/cart";
+import { useContext } from "react";
 
 const Header = () => {
-  const cartItems = useSelector((store) => store.cart.items);
+  const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
+    useContext(CartContext);
   const header = useSelector((store) => store.header?.corsPlugin);
   return (
     <div className="flex w-full sticky top-0 justify-between px-20 py-1 items-center bg-gray-50 shadow-md z-50">
