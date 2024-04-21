@@ -1,28 +1,32 @@
-import ItemList from "./ItemList";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/cart";
-import CartItems from "./CartItems";
 import { RES_CARD_IMG } from "../Utils/Constants";
+import { useDispatch } from "react-redux";
+import { setCorsPlugin } from "../Utils/headerSlice";
 
 const Cart = () => {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
     useContext(CartContext);
+  const dispatch = useDispatch();
+  cartItems.length === 0
+    ? dispatch(setCorsPlugin(true))
+    : dispatch(setCorsPlugin(false));
 
   if (cartItems.length === 0) {
     return (
-      <h1 className=" font-bold text-2xl text-center mt-44">
-        Cart is empty Please Add Items
+      <h1 className=" font-bold text-2xl text-center mt-44 ">
+        Cart is empty! Please Add Items
       </h1>
     );
   } else {
     return (
-      <div className="mx-32 flex justify-center gap-5 m-8">
-        <div>
+      <div className="flex mx-auto w-3/4">
+        <div className="overflow-y-auto h-[calc(100vh-80px)]">
           {cartItems.map((item) => {
             return (
               <div
                 key={item?.card?.info?.id}
-                className="text-left flex justify-between items-center border-b-2 "
+                className="text-left flex justify-between items-center border-b-2 m-4 "
               >
                 <div className="flex flex-col w-9/12 p-4">
                   <span> {item?.card?.info?.name}</span>
@@ -66,9 +70,9 @@ const Cart = () => {
           })}
         </div>
         <div className="">
-          <div className=" border border-gray-300 m-4 fixed">
+          <div className=" bg-slate-50 border border-gray-300 m-4 w-96">
             <div className="text-lg">
-              <h1 className=" bg-slate-50 p-4 text-gray-400 font-bold text-xl">
+              <h1 className=" bg-slate-200 p-4 text-gray-600 font-bold text-xl">
                 Price Details
               </h1>
               <div className="flex justify-between p-4">
@@ -78,7 +82,7 @@ const Cart = () => {
               <div className="flex justify-between p-4">
                 <div>Discount</div>
                 <span className="text-green-600">
-                  ₹ - {Math.round((getCartTotal() / 100) * 11)}
+                  - ₹ {Math.round((getCartTotal() / 100) * 47)}
                 </span>
               </div>
             </div>
@@ -92,7 +96,7 @@ const Cart = () => {
               </div>
             </div>
             <button
-              className=" py-1 bg-red-500 text-white w-full"
+              className=" p-3 bg-red-500 text-white w-full"
               onClick={() => clearCart()}
             >
               Clear Cart
